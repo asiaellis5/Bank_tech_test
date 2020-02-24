@@ -15,13 +15,23 @@ describe('BankAccount', function() {
 
   describe("deposit", function() {
     it("allows the user to deposit into the account", function(){
-      expect(bankAccount.deposit(1000)).toEqual(1000)
+      bankAccount.deposit(1000)
+      expect(bankAccount.balance).toEqual(1000)
     })
   })
 
   describe("withdraw", function() {
     it("allows the user to withdraw from the account", function() {
-      expect(bankAccount.withdraw(500)).toEqual(500)
+      bankAccount.deposit(1000)
+      bankAccount.withdraw(500)
+      expect(bankAccount.balance).toEqual(500)
+    })
+  })
+
+  describe('total', function() {
+    it("works out the total balance of the account when money deposited", function() {
+      bankAccount.deposit(1000)
+      expect(bankAccount.totalBalance()).toEqual(1000)
     })
   })
 

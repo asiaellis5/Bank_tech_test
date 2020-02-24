@@ -5,9 +5,17 @@ var BankAccount = function() {
 }
 
 BankAccount.prototype.deposit = function(number) {
-  return number
+  this.balance += number
 }
 
 BankAccount.prototype.withdraw = function(number) {
-  return number
+  this.balance -= number
 }
+
+BankAccount.prototype.totalBalance = function() {
+  return this.balance
+}
+
+
+
+

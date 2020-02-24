@@ -19,4 +19,10 @@ describe('BankAccount', function() {
     })
   })
 
+  describe("withdraw", function() {
+    it("allows the user to withdraw from the account", function() {
+      expect(bankAccount.withdraw(500)).toEqual(500)
+    })
+  })
+
 })

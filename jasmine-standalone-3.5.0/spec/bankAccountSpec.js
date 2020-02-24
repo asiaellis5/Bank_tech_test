@@ -33,6 +33,12 @@ describe('BankAccount', function() {
       bankAccount.deposit(1000)
       expect(bankAccount.totalBalance()).toEqual(1000)
     })
+
+    it( "works when depositing and withdrawing money", function() {
+      bankAccount.deposit(1000)
+      bankAccount.withdraw(500)
+      expect(bankAccount.totalBalance()).toEqual(500)
+    })
   })
 
 })

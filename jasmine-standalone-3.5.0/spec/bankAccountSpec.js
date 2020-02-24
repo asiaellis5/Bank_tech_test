@@ -7,9 +7,16 @@ describe('BankAccount', function() {
     bankAccount = new BankAccount;
   })
 
-  describe('start amount', function() {
+  describe('starting balance', function() {
     it('the account starts empty', function() {
-      expect(bankAccount.amount).toEqual(0)
+      expect(bankAccount.balance).toEqual(0)
     })
   })
+
+  describe("deposit", function() {
+    it("allows the user to deposit into the account", function(){
+      expect(bankAccount.deposit(1000)).toEqual(1000)
+    })
+  })
+
 })

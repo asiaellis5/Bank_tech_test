@@ -1,3 +1,7 @@
 var BankAccount = function() {
-  this.amount = 0
+  this.balance = 0
+}
+
+BankAccount.prototype.deposit = function(number) {
+  return number
 }

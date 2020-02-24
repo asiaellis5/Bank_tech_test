@@ -22,9 +22,17 @@ BankAccount.prototype.totalBalance = function() {
   return this.balance
 }
 
+BankAccount.prototype.todaysDate = function() {
+  var date = new Date()
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return `${day}` + '/0' + `${month}` + '/' + `${year}`
+}
+
+
 BankAccount.prototype.print = function() {
-  var date = '24/02/2020'
-  return `date || credit || debit || balance\n ${date} || ${this.depositAmount} || || ${this.balance}`
+  return `date || credit || debit || balance\n ${this.todaysDate()} || ${this.depositAmount} || || ${this.balance}`
 }
 
 

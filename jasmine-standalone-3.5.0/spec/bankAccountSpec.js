@@ -41,6 +41,12 @@ describe('BankAccount', function() {
     })
   })
 
+  describe("todaysDate", function() {
+    it("prints todays date", function() {
+      expect(bankAccount.todaysDate()).toEqual('24/02/2020')
+    })
+  })
+
   describe("print", function() {
     it("prints the results in a table format", function() {
       bankAccount.deposit(1000)

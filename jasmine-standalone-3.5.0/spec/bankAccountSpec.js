@@ -48,9 +48,15 @@ describe('BankAccount', function() {
   })
 
   describe("print", function() {
-    it("prints the results in a table format", function() {
+    it("prints the results in a table format for one line", function() {
       bankAccount.deposit(1000)
-      expect(bankAccount.print()).toEqual("date || credit || debit || balance\n 24/02/2020 || 1000 || || 1000")
+      expect(bankAccount.print()).toEqual("date || credit || debit || balance\n24/02/2020 || 1000 || || 1000")
+    })
+
+    it("prints the results in table format when two deposits", function() {
+      bankAccount.deposit(1000)
+      bankAccount.deposit(2000)
+      expect(bankAccount.print()).toEqual("date || credit || debit || balance\n24/02/2020 || 1000 || || 1000\n24/02/2020 || 2000 || || 3000")
     })
   })
 

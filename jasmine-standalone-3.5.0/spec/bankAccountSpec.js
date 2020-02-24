@@ -15,7 +15,7 @@ describe('BankAccount', function() {
 
   describe("deposit", function() {
     it("allows the user to deposit into the account", function(){
-      bankAccount.deposit(1000)
+      expect(bankAccount.deposit(1000)).toEqual(1000)
       expect(bankAccount.balance).toEqual(1000)
     })
   })
@@ -23,7 +23,7 @@ describe('BankAccount', function() {
   describe("withdraw", function() {
     it("allows the user to withdraw from the account", function() {
       bankAccount.deposit(1000)
-      bankAccount.withdraw(500)
+      expect(bankAccount.withdraw(500)).toEqual(500)
       expect(bankAccount.balance).toEqual(500)
     })
   })
@@ -38,6 +38,13 @@ describe('BankAccount', function() {
       bankAccount.deposit(1000)
       bankAccount.withdraw(500)
       expect(bankAccount.totalBalance()).toEqual(500)
+    })
+  })
+
+  describe("print", function() {
+    it("prints the results in a table format", function() {
+      bankAccount.deposit(1000)
+      expect(bankAccount.print()).toEqual("date || credit || debit || balance\n 24/02/2020 || 1000 || || 1000")
     })
   })
 

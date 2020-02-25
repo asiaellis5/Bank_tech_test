@@ -2,19 +2,21 @@
 
 var BankAccount = function() {
   this.balance = 0
-  this.header = "date || credit || debit || balance\n"
   this.transactions = []
+  this.isPositive = true
 }
 
-BankAccount.prototype.deposit = function(number, date = this.todaysDate()) {
+BankAccount.prototype.deposit = function(number) {
   this.balance += number
-  this.transactions.push(`${date} || ${number} || || ${this.totalBalance()}`)
+  this.isPositive = true
+  this._createStatement(number)
   return number
 }
 
-BankAccount.prototype.withdraw = function(number, date = this.todaysDate()) {
+BankAccount.prototype.withdraw = function(number) {
   this.balance -= number
-  this.transactions.push(`${date} || || ${number}|| ${this.totalBalance()}`)
+  this.isPositive = false
+  this._createStatement(number)
   return number
 }
 
@@ -22,18 +24,24 @@ BankAccount.prototype.totalBalance = function() {
   return this.balance
 }
 
-BankAccount.prototype.todaysDate = function() {
+BankAccount.prototype._todaysDate = function() {
   var date = new Date()
   var year = date.getFullYear()
-  var month = date.getMonth() + 1
+  var month = String(date.getMonth() + 1).padStart(2, '0')
   var day = date.getDate()
-  return `${day}` + '/0' + `${month}` + '/' + `${year}`
+  return `${day}` + '/' + `${month}` + '/' + `${year}`
+}
+
+BankAccount.prototype._createStatement = function(number, date = this._todaysDate()) {
+  if (this.isPositive) {
+    this.transactions.push(`${date} || ${number.toFixed(2)} || || ${this.totalBalance().toFixed(2)}`)
+  } else {
+    this.transactions.push(`${date} || || ${number.toFixed(2)} || ${this.totalBalance().toFixed(2)}`)
+  }
 }
 
 
-BankAccount.prototype.printStatement = function() {
-  return this.header + this.transactions.reverse().join('\n')
-}
+
 
 
 

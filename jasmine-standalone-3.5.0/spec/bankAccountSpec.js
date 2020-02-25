@@ -4,7 +4,7 @@ describe('BankAccount', function() {
   var bankAccount;
 
   beforeEach(function(){
-    bankAccount = new BankAccount;
+    bankAccount = new BankAccount();
   })
 
   describe('starting balance', function() {
@@ -12,6 +12,7 @@ describe('BankAccount', function() {
       expect(bankAccount.balance).toEqual(0)
     })
   })
+
 
   describe("deposit", function() {
     it("allows the user to deposit into the account", function(){
@@ -25,6 +26,11 @@ describe('BankAccount', function() {
       bankAccount.deposit(1000)
       expect(bankAccount.withdraw(500)).toEqual(500)
       expect(bankAccount.balance).toEqual(500)
+    })
+
+    it("allows the user to withdraw if they haven't deposited", function() {
+      bankAccount.withdraw(500)
+      expect(bankAccount.balance).toEqual(-500)
     })
   })
 
@@ -41,29 +47,6 @@ describe('BankAccount', function() {
     })
   })
 
-  describe("todaysDate", function() {
-    it("prints todays date", function() {
-      expect(bankAccount.todaysDate()).toEqual('24/02/2020')
-    })
-  })
-
-  describe("printStatement", function() {
-    it("prints the results in a table format for one line deposit", function() {
-      bankAccount.deposit(1000, '24/02/2020')
-      expect(bankAccount.printStatement()).toEqual("date || credit || debit || balance\n24/02/2020 || 1000 || || 1000")
-    })
-
-    it("prints the results in table format when two deposits", function() {
-      bankAccount.deposit(1000, '24/02/2020')
-      bankAccount.deposit(2000, '25/02/2020')
-      expect(bankAccount.printStatement()).toEqual("date || credit || debit || balance\n25/02/2020 || 2000 || || 3000\n24/02/2020 || 1000 || || 1000")
-    })
-
-    it("prints the results in table when you deposit and withdraw", function() {
-      bankAccount.deposit(2000, '24/02/2020')
-      bankAccount.withdraw(1000, '24/02/2020')
-      expect(bankAccount.printStatement()).toEqual("date || credit || debit || balance\n24/02/2020 || || 1000|| 1000\n24/02/2020 || 2000 || || 2000")
-    })
-  })
+  
 
 })

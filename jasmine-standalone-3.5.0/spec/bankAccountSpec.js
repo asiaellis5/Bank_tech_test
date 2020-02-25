@@ -2,9 +2,11 @@
 
 describe('BankAccount', function() {
   var bankAccount;
+  var statement;
 
   beforeEach(function(){
-    bankAccount = new BankAccount();
+    statement = new Statement()
+    bankAccount = new BankAccount(statement);
   })
 
   describe('starting balance', function() {

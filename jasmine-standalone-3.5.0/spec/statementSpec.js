@@ -5,8 +5,8 @@ describe("statement", function() {
   var bankAccount;
 
   beforeEach(function(){
-    bankAccount = new BankAccount
-    statement = new Statement(bankAccount)
+    statement = new Statement()
+    bankAccount = new BankAccount(statement)
   })
 
   describe("printStatement", function() {

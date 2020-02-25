@@ -2,18 +2,19 @@
 
 var BankAccount = function() {
   this.balance = 0
-  this.transactions = ["date || credit || debit || balance"]
+  this.header = "date || credit || debit || balance\n"
+  this.transactions = []
 }
 
-BankAccount.prototype.deposit = function(number) {
+BankAccount.prototype.deposit = function(number, date = this.todaysDate()) {
   this.balance += number
-  this.transactions.push(`${this.todaysDate()} || ${number} || || ${this.balance}`)
+  this.transactions.push(`${date} || ${number} || || ${this.totalBalance()}`)
   return number
 }
 
-BankAccount.prototype.withdraw = function(number) {
+BankAccount.prototype.withdraw = function(number, date = this.todaysDate()) {
   this.balance -= number
-  this.transactions.push(`${this.todaysDate()} || || ${number}|| ${this.balance}`)
+  this.transactions.push(`${date} || || ${number}|| ${this.totalBalance()}`)
   return number
 }
 
@@ -30,8 +31,8 @@ BankAccount.prototype.todaysDate = function() {
 }
 
 
-BankAccount.prototype.print = function() {
-  return this.transactions.join('\n')
+BankAccount.prototype.printStatement = function() {
+  return this.header + this.transactions.reverse().join('\n')
 }
 
 

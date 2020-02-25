@@ -5,7 +5,13 @@ describe('BankAccount', function() {
   var statement;
 
   beforeEach(function(){
-    statement = new Statement()
+    statement = {
+      createStatement: function() {
+      },
+      printStatement: function() {
+        return "test statement"
+      }
+    }
     bankAccount = new BankAccount(statement);
   })
 
@@ -46,6 +52,12 @@ describe('BankAccount', function() {
       bankAccount.deposit(1000)
       bankAccount.withdraw(500)
       expect(bankAccount.totalBalance()).toEqual(500)
+    })
+  })
+
+  describe("printStatement", function() {
+    it("recieves printStatement from statement", function() {
+      expect(bankAccount.printStatement()).toEqual("test statement")
     })
   })
 })

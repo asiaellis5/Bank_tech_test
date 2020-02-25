@@ -1,10 +1,9 @@
 var Statement = function() {
   this.transactions = []
-  this.isCredit = true
 }
 
-Statement.prototype.createStatement = function(number, totalBalance, date = this._transactionDate()) {
-  if (this.isCredit) {
+Statement.prototype.createStatement = function(number, totalBalance, transactionType, date = this._transactionDate()) {
+  if (transactionType === 'deposit') {
     this.transactions.push(`${date} || ${number.toFixed(2)} || || ${totalBalance.toFixed(2)}`)
   } else {
     this.transactions.push(`${date} || || ${number.toFixed(2)} || ${totalBalance.toFixed(2)}`)

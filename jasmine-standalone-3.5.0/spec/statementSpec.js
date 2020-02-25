@@ -9,9 +9,13 @@ describe("statement", function() {
     date = "25/02/2020"
   })
 
+  it("starts with an empty list of transactions", function() {
+    expect(statement.transactions.length).toEqual(0)
+  })
+
   describe("createStatement", function() {
     it("creates a credit string if money deposited", function() {
-      statement.createStatement(1000, 1000, "deposit")
+      statement.createStatement(1000, 1000, "deposit", date)
       expect(statement.transactions[0]).toEqual("25/02/2020 || 1000.00 || || 1000.00")
     })
 

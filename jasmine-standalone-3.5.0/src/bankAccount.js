@@ -8,13 +8,11 @@ var BankAccount = function(statement) {
 BankAccount.prototype.deposit = function(number) {
   this.balance += number
   this.statement.createStatement(number, this.totalBalance(), "deposit")
-  return number
 }
 
 BankAccount.prototype.withdraw = function(number) {
   this.balance -= number
   this.statement.createStatement(number, this.totalBalance(), "withdraw")
-  return number
 }
 
 BankAccount.prototype.totalBalance = function() {

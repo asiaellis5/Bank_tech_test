@@ -24,7 +24,7 @@ describe('BankAccount', function() {
 
   describe("deposit", function() {
     it("allows the user to deposit into the account", function(){
-      expect(bankAccount.deposit(1000)).toEqual(1000)
+      bankAccount.deposit(1000)
       expect(bankAccount.balance).toEqual(1000)
     })
   })
@@ -32,7 +32,7 @@ describe('BankAccount', function() {
   describe("withdraw", function() {
     it("allows the user to withdraw from the account", function() {
       bankAccount.deposit(1000)
-      expect(bankAccount.withdraw(500)).toEqual(500)
+      bankAccount.withdraw(500)
       expect(bankAccount.balance).toEqual(500)
     })
 

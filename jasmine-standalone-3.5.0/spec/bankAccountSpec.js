@@ -48,7 +48,4 @@ describe('BankAccount', function() {
       expect(bankAccount.totalBalance()).toEqual(500)
     })
   })
-
-  
-
 })

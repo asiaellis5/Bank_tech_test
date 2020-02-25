@@ -9,6 +9,18 @@ describe("statement", function() {
     bankAccount = new BankAccount(statement)
   })
 
+  describe("createStatement", function() {
+    it("creates a credit string if money deposited", function() {
+      bankAccount.deposit(1000)
+      expect(statement.transactions[0]).toEqual("25/02/2020 || 1000.00 || || 1000.00")
+    })
+
+    it("creates a debit string if money withdrawn", function() {
+      bankAccount.withdraw(500)
+      expect(statement.transactions[0]).toEqual("25/02/2020 || || 500.00 || -500.00")
+    })
+  })
+
   describe("printStatement", function() {
       it("prints the results in a table format for one line deposit", function() {
         bankAccount.deposit(1000)

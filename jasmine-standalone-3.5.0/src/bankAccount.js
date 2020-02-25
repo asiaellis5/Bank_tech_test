@@ -7,20 +7,24 @@ var BankAccount = function(statement) {
 
 BankAccount.prototype.deposit = function(number) {
   this.balance += number
-  this.statement.isPositive = true
+  this.statement.isCredit = true
   this.statement.createStatement(number, this.totalBalance())
   return number
 }
 
 BankAccount.prototype.withdraw = function(number) {
   this.balance -= number
-  this.statement.isPositive = false
+  this.statement.isCredit = false
   this.statement.createStatement(number, this.totalBalance())
   return number
 }
 
 BankAccount.prototype.totalBalance = function() {
   return this.balance
+}
+
+BankAccount.prototype.printStatement = function() {
+  return this.statement.printStatement()
 }
 
 

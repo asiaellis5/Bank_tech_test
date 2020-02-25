@@ -1,10 +1,10 @@
 var Statement = function() {
   this.transactions = []
-  this.isPositive = true
+  this.isCredit = true
 }
 
 Statement.prototype.createStatement = function(number, totalBalance, date = this._transactionDate()) {
-  if (this.isPositive) {
+  if (this.isCredit) {
     this.transactions.push(`${date} || ${number.toFixed(2)} || || ${totalBalance.toFixed(2)}`)
   } else {
     this.transactions.push(`${date} || || ${number.toFixed(2)} || ${totalBalance.toFixed(2)}`)

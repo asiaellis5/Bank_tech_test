@@ -17,12 +17,12 @@ describe("FeatureTests", function() {
     it("prints the results in table format when two deposits", function() {
       bankAccount.deposit(1000)
       bankAccount.deposit(2000)
-      expect(statement.printStatement()).toEqual(`date || credit || debit || balance\n${date} || 2000.00 || || 3000.00\n25/02/2020 || 1000.00 || || 1000.00`)
+      expect(statement.printStatement()).toEqual(`date || credit || debit || balance\n${date} || 2000.00 || || 3000.00\n${date} || 1000.00 || || 1000.00`)
     })
 
     it("prints the results in table when you deposit and withdraw", function() {
       bankAccount.deposit(2000)
       bankAccount.withdraw(1000)
-      expect(statement.printStatement()).toEqual(`date || credit || debit || balance\n${date} || || 1000.00 || 1000.00\n25/02/2020 || 2000.00 || || 2000.00`)
+      expect(statement.printStatement()).toEqual(`date || credit || debit || balance\n${date} || || 1000.00 || 1000.00\n${date} || 2000.00 || || 2000.00`)
     })
 })
